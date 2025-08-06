@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 // API base URL - will work for both development and production
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://upskill-backend-lynz.onrender.com';
 
 function Spinner() {
   return <span className="spinner" aria-label="Loading" />;
@@ -16,7 +16,7 @@ function StarRating({ rating }) {
   const stars = [];
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
-  
+
   for (let i = 0; i < 5; i++) {
     if (i < fullStars) {
       stars.push(<span key={i} className="star filled">★</span>);
@@ -26,7 +26,7 @@ function StarRating({ rating }) {
       stars.push(<span key={i} className="star">☆</span>);
     }
   }
-  
+
   return <div className="rating">{stars} <span className="rating-text">({rating.toFixed(1)})</span></div>;
 }
 
@@ -88,31 +88,31 @@ function CareerPathCard({ careerPath }) {
 function Pagination({ currentPage, totalPages, onPageChange }) {
   const pages = [];
   const maxVisiblePages = 5;
-  
+
   let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
   let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-  
+
   if (endPage - startPage + 1 < maxVisiblePages) {
     startPage = Math.max(1, endPage - maxVisiblePages + 1);
   }
-  
+
   for (let i = startPage; i <= endPage; i++) {
     pages.push(i);
   }
-  
+
   return (
     <div className="pagination">
-      <button 
+      <button
         className="pagination-btn"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
         ← Previous
       </button>
-      
+
       {startPage > 1 && (
         <>
-          <button 
+          <button
             className="pagination-btn"
             onClick={() => onPageChange(1)}
           >
@@ -121,7 +121,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
           {startPage > 2 && <span className="pagination-ellipsis">...</span>}
         </>
       )}
-      
+
       {pages.map(page => (
         <button
           key={page}
@@ -131,11 +131,11 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
           {page}
         </button>
       ))}
-      
+
       {endPage < totalPages && (
         <>
           {endPage < totalPages - 1 && <span className="pagination-ellipsis">...</span>}
-          <button 
+          <button
             className="pagination-btn"
             onClick={() => onPageChange(totalPages)}
           >
@@ -143,8 +143,8 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
           </button>
         </>
       )}
-      
-      <button 
+
+      <button
         className="pagination-btn"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
@@ -180,7 +180,7 @@ function App() {
   const [currentPageNum, setCurrentPageNum] = useState(1);
   const [subjects, setSubjects] = useState([]);
   const [levels, setLevels] = useState([]);
-  
+
   const RECOMMENDATIONS_PER_PAGE = 8;
 
   // Fetch data from backend
@@ -224,7 +224,7 @@ function App() {
 
     // Apply paid filter
     if (paidFilter !== 'all') {
-      filtered = filtered.filter(course => 
+      filtered = filtered.filter(course =>
         paidFilter === 'paid' ? course.is_paid : !course.is_paid
       );
     }
@@ -262,7 +262,7 @@ function App() {
     // Update available filter options based on filtered results
     const uniqueSubjects = [...new Set(filtered.map(course => course.subject))].sort();
     const uniqueLevels = [...new Set(filtered.map(course => course.level))].sort();
-    
+
     setSubjects(uniqueSubjects);
     setLevels(uniqueLevels);
   }, [allRecommendations, searchTerm, platformFilter, paidFilter, subjectFilter, levelFilter, durationFilter]);
@@ -282,7 +282,7 @@ function App() {
       setError('Please enter a job role');
       return;
     }
-    
+
     setLoading(true);
     setError('');
     setSuccess(false);
@@ -291,7 +291,7 @@ function App() {
     setCareerPath(null);
     setAiCourses([]);
     setCurrentPageNum(1);
-    
+
     try {
       // Get career path
       const careerRes = await fetch(`${API_BASE_URL}/career_path/${encodeURIComponent(customRole.trim())}`);
@@ -299,7 +299,7 @@ function App() {
         const careerData = await careerRes.json();
         setCareerPath(careerData);
       }
-      
+
       // Get AI courses if enabled
       if (useAI && geminiAvailable) {
         try {
@@ -314,7 +314,7 @@ function App() {
           console.log("AI courses not available:", e);
         }
       }
-      
+
       // Get recommendations
       let url = `${API_BASE_URL}/recommendations?job_role=${encodeURIComponent(customRole.trim())}`;
       if (paidFilter !== 'all') {
@@ -332,11 +332,11 @@ function App() {
       if (useAI) {
         url += `&use_ai=true`;
       }
-      
+
       const res = await fetch(url);
       if (!res.ok) throw new Error('API error');
       const data = await res.json();
-      
+
       setAllRecommendations(data.recommendations);
       setSuccess(true);
       setTimeout(() => setSuccess(false), 1200);
@@ -351,7 +351,7 @@ function App() {
   const handleCareerClick = async (careerRole) => {
     setCustomRole(careerRole);
     setCurrentPage('form');
-    
+
     // Auto-recommend courses for this career
     setLoading(true);
     setError('');
@@ -361,7 +361,7 @@ function App() {
     setCareerPath(null);
     setAiCourses([]);
     setCurrentPageNum(1);
-    
+
     try {
       // Get career path
       const careerRes = await fetch(`${API_BASE_URL}/career_path/${encodeURIComponent(careerRole)}`);
@@ -369,12 +369,12 @@ function App() {
         const careerData = await careerRes.json();
         setCareerPath(careerData);
       }
-      
+
       // Get recommendations
       const res = await fetch(`${API_BASE_URL}/recommendations?job_role=${encodeURIComponent(careerRole)}`);
       if (!res.ok) throw new Error('API error');
       const data = await res.json();
-      
+
       setAllRecommendations(data.recommendations);
       setSuccess(true);
       setTimeout(() => setSuccess(false), 1200);
@@ -454,7 +454,7 @@ function App() {
           <div className="container">
             <h2>Ready to reimagine your career?</h2>
             <p>Get the skills and real-world experience employers want with Career Accelerators.</p>
-            
+
             <div className="career-cards">
               <div className="career-card yellow" onClick={() => handleCareerClick("Full Stack Web Developer")}>
                 <div className="career-icon">&lt; /&gt;</div>
@@ -472,9 +472,9 @@ function App() {
                 <h3>Data Scientist</h3>
               </div>
             </div>
-            
+
             <div className="get-started-section">
-              <button 
+              <button
                 className="get-started-button"
                 onClick={() => setCurrentPage('form')}
               >
@@ -494,7 +494,7 @@ function App() {
       <header className="app-header">
         <div className="container">
           <div className="header-content">
-            <button 
+            <button
               className="nav-button back-button"
               onClick={() => setCurrentPage('home')}
             >
@@ -519,7 +519,7 @@ function App() {
                 value={customRole}
                 onChange={e => setCustomRole(e.target.value)}
               />
-              
+
               <div className="skills-section">
                 <label htmlFor="user-skills">Your current skills (comma-separated):</label>
                 <input
@@ -533,7 +533,7 @@ function App() {
                   <small>Popular skills: {availableSkills.slice(0, 10).join(', ')}...</small>
                 </div>
               </div>
-              
+
               <div className="goal-section">
                 <label htmlFor="learning-goal">Your learning goal:</label>
                 <input
@@ -544,7 +544,7 @@ function App() {
                   onChange={e => setLearningGoal(e.target.value)}
                 />
               </div>
-              
+
               <div className="search-section">
                 <label htmlFor="search-courses">Search courses:</label>
                 <input
@@ -555,7 +555,7 @@ function App() {
                   onChange={e => setSearchTerm(e.target.value)}
                 />
               </div>
-              
+
               {geminiAvailable && (
                 <div className="ai-toggle-section">
                   <label className="ai-toggle">
@@ -569,7 +569,7 @@ function App() {
                   <small className="ai-note">AI will provide enhanced course descriptions and additional insights</small>
                 </div>
               )}
-              
+
               <div className="filter-row">
                 <div className="filter-group">
                   <label htmlFor="platform-filter">Platform:</label>
@@ -584,7 +584,7 @@ function App() {
                     ))}
                   </select>
                 </div>
-                
+
                 <div className="filter-group">
                   <label htmlFor="paid-filter">Price:</label>
                   <select
@@ -597,7 +597,7 @@ function App() {
                     <option value="paid">Paid Only</option>
                   </select>
                 </div>
-                
+
                 {subjects.length > 0 && (
                   <div className="filter-group">
                     <label htmlFor="subject-filter">Subject:</label>
@@ -613,7 +613,7 @@ function App() {
                     </select>
                   </div>
                 )}
-                
+
                 {levels.length > 0 && (
                   <div className="filter-group">
                     <label htmlFor="level-filter">Level:</label>
@@ -629,7 +629,7 @@ function App() {
                     </select>
                   </div>
                 )}
-                
+
                 <div className="filter-group">
                   <label htmlFor="duration-filter">Duration:</label>
                   <select
@@ -644,21 +644,21 @@ function App() {
                   </select>
                 </div>
               </div>
-              
+
               <button onClick={handleRecommend} disabled={!customRole.trim() || loading}>
                 {loading ? <Spinner /> : success ? <SuccessCheck /> : 'Get Smart Recommendations'}
               </button>
             </div>
-            
+
             {error && <p className="error-msg">{error}</p>}
-            
+
             <div className="results">
               {careerPath && (
                 <div className="career-path-section">
                   <CareerPathCard careerPath={careerPath} />
                 </div>
               )}
-              
+
               {aiCourses.length > 0 && (
                 <div className="ai-courses-section">
                   <h2>🤖 AI-Generated Course Suggestions</h2>
@@ -669,11 +669,11 @@ function App() {
                   </div>
                 </div>
               )}
-              
+
               {emptyState && (
                 <div className="empty-state">No recommendations yet. Click the button to get started!</div>
               )}
-              
+
               {filteredRecommendations.length > 0 && (
                 <>
                   <div className="results-header">
@@ -682,15 +682,15 @@ function App() {
                       Showing {((currentPageNum - 1) * RECOMMENDATIONS_PER_PAGE) + 1} - {Math.min(currentPageNum * RECOMMENDATIONS_PER_PAGE, filteredRecommendations.length)} of {filteredRecommendations.length} courses
                     </div>
                   </div>
-                  
+
                   <div className="course-list">
                     {currentRecommendations.map((course, idx) => (
                       <CourseCard key={idx} course={course} />
                     ))}
                   </div>
-                  
+
                   {totalPages > 1 && (
-                    <Pagination 
+                    <Pagination
                       currentPage={currentPageNum}
                       totalPages={totalPages}
                       onPageChange={handlePageChange}

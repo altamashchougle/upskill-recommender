@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Python for Everybody",
+    "provider": "Coursera",
+    "url": "https://www.coursera.org/learn/python",
+    "tags": ["Software Engineer", "Data Scientist"]
+  },
+  {
+    "title": "Intro to Data Science",
+    "provider": "edX",
+    "url": "https://www.edx.org/course/introduction-to-data-science",
+    "tags": ["Data Scientist"]
+  },
+  {
+    "title": "Product Management 101",
+    "provider": "Udemy",
+    "url": "https://www.udemy.com/course/product-management-101/",
+    "tags": ["Product Manager"]
+  },
+  {
+    "title": "Digital Marketing Basics",
+    "provider": "Coursera",
+    "url": "https://www.coursera.org/learn/digital-marketing",
+    "tags": ["Digital Marketer"]
+  },
+  {
+    "title": "Graphic Design Fundamentals",
+    "provider": "edX",
+    "url": "https://www.edx.org/course/graphic-design",
+    "tags": ["Graphic Designer"]
+  }
+]

@@ -13,7 +13,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://admirable-maamoul-860c44.netlify.app"
+        "https://admirable-maamoul-860c44.netlify.app",
         "http://localhost:5173",  # React dev server
         "http://localhost:3000",  # Alternative dev server
         "https://*.netlify.app",  # Netlify domains

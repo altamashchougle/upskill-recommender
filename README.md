@@ -13,9 +13,6 @@ An intelligent system that provides AI-powered course and career path recommenda
   - [Installation](#installation)
 - [Usage](#usage)
 - [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## About The Project
 
@@ -116,9 +113,4 @@ Ensure you have the following installed:
 
 This application is ready for deployment on modern hosting platforms. For detailed, step-by-step instructions on deploying the frontend to Netlify and the backend to services like Railway or Render, please see our complete guide:
 
-➡️ **Deployment Guide (DEPLOYMENT.md)**
-
-
-
-
-
+➡️ [**Deployment Guide**](DEPLOYMENT.md)

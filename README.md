@@ -25,6 +25,9 @@ In a rapidly evolving job market, knowing which skills to learn next is a major 
 Below is a sneak peek of the Upskill Recommender in action.
 
 ![Upskill Recommender - Main Interface](screenshots/image.png)
+
+
+
 ![Upskill Recommender - Recommendation Results](screenshots/image1.png)
 ### Key Features
 

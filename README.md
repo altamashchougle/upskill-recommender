@@ -1,8 +1,5 @@
 # Upskill Recommender
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 An intelligent system that provides AI-powered course and career path recommendations to help users upskill effectively based on their current role and career goals.
 
@@ -121,18 +118,7 @@ This application is ready for deployment on modern hosting platforms. For detail
 
 ➡️ **Deployment Guide (DEPLOYMENT.md)**
 
-## Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 
-## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-## Contact
-
-Your Name - @your_twitter - your.email@example.com
-
-Project Link: https://github.com/yourusername/upskill-recommender

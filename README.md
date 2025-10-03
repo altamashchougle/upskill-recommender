@@ -6,11 +6,13 @@ An intelligent system that provides AI-powered course and career path recommenda
 ## Table of Contents
 
 - [About The Project](#about-the-project)
+  - [Project Preview](#project-preview)
   - [Key Features](#key-features)
   - [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+- [Project Structure](#project-structure)
 - [Usage](#usage)
 - [Deployment](#deployment)
 
@@ -18,6 +20,12 @@ An intelligent system that provides AI-powered course and career path recommenda
 
 In a rapidly evolving job market, knowing which skills to learn next is a major challenge. The Upskill Recommender solves this by leveraging AI to analyze a user's profile and career aspirations, delivering a personalized roadmap for professional growth.
 
+### Project Preview
+
+Below is a sneak peek of the Upskill Recommender in action.
+
+![Upskill Recommender - Main Interface](screenshots/image.png)
+![Upskill Recommender - Recommendation Results](screenshots/image1.png)
 ### Key Features
 
 ✨ **AI-Powered Insights:** Utilizes Large Language Models (via Gemini API) for smart recommendations.
@@ -36,7 +44,8 @@ This project is built with a modern tech stack:
     *   [Pandas](https://pandas.pydata.org/)
 *   **Frontend:**
     *   [Vite](https://vitejs.dev/)
-    *   [React](https://reactjs.org/) (or your framework of choice)
+    *   [React](https://reactjs.org/) 
+   
 *   **AI:**
     *   [Google Gemini](https://ai.google.dev/)
 
@@ -54,15 +63,14 @@ Ensure you have the following installed:
 
 1.  **Clone the repository**
     ```sh
-    git clone https://github.com/yourusername/upskill-recommender.git
+    git clone https://github.com/your-username/upskill-recommender.git
     cd upskill-recommender
     ```
 
 2.  **Setup Backend**
     ```sh
-    # Navigate to the backend directory (if you have one)
-    # cd backend 
-
+    # Navigate to the backend directory
+    cd backend
     # Create and activate a virtual environment
     python -m venv venv
     # Windows
@@ -85,7 +93,7 @@ Ensure you have the following installed:
 
 4.  **Environment Variables**
     *   In the root of the backend directory, create a `.env` file and add your API key:
-        ```
+        ```dotenv
         GEMINI_API_KEY="your-api-key"
         ```
     *   In the `frontend` directory, create a `.env.local` file to point to your local backend:
@@ -93,10 +101,29 @@ Ensure you have the following installed:
         VITE_API_URL="http://127.0.0.1:8000"
         ```
 
+## Project Structure
+
+The repository is organized as a monorepo with distinct frontend and backend directories.
+
+```
+upskill-recommender/
+├── backend/              # FastAPI backend application
+│   ├── .env              # Environment variables (GEMINI_API_KEY)
+│   ├── main.py           # Main API logic
+│   └── requirements.txt  # Python dependencies
+├── frontend/             # React frontend application
+│   ├── .env.local        # Local environment variables (VITE_API_URL)
+│   ├── dist/             # Build output directory
+│   └── src/              # React source code
+├── screenshots/          # Application screenshots
+├── DEPLOYMENT.md         # Detailed deployment guide
+└── README.md             # This file
+```
+
 ## Usage
 
 1.  **Run the Backend Server**
-    In your backend directory, with the virtual environment activated:
+    From the `backend` directory, with the virtual environment activated:
     ```sh
     uvicorn main:app --reload
     ```
@@ -114,3 +141,5 @@ Ensure you have the following installed:
 This application is ready for deployment on modern hosting platforms. For detailed, step-by-step instructions on deploying the frontend to Netlify and the backend to services like Railway or Render, please see our complete guide:
 
 ➡️ [**Deployment Guide**](DEPLOYMENT.md)
+
+

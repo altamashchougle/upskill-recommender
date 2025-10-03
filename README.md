@@ -24,10 +24,10 @@ In a rapidly evolving job market, knowing which skills to learn next is a major 
 
 Below is a sneak peek of the Upskill Recommender in action.
 
+#### Main Interface
 ![Upskill Recommender - Main Interface](screenshots/image.png)
 
-
-
+#### Recommendation Results
 ![Upskill Recommender - Recommendation Results](screenshots/image1.png)
 ### Key Features
 
@@ -48,7 +48,6 @@ This project is built with a modern tech stack:
 *   **Frontend:**
     *   [Vite](https://vitejs.dev/)
     *   [React](https://reactjs.org/) 
-   
 *   **AI:**
     *   [Google Gemini](https://ai.google.dev/)
 
@@ -144,5 +143,3 @@ upskill-recommender/
 This application is ready for deployment on modern hosting platforms. For detailed, step-by-step instructions on deploying the frontend to Netlify and the backend to services like Railway or Render, please see our complete guide:
 
 ➡️ [**Deployment Guide**](DEPLOYMENT.md)
-
-

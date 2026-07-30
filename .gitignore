@@ -1,18 +1,46 @@
-# Python virtual environment
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+*.env
+
+# Python Virtual Environments
 venv/
+env/
+.env_venv/
+.venv/
 
-# Python cache files
+# Python Cache & Build Files
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
 
-# Logs and other temporary files
+# Logs and Temporary Files
 *.log
+*.tmp
+temp/
 
-# macOS system files
+# OS and IDE System Files
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
 
-# Node.js dependencies
+# Node.js & Frontend Build
 node_modules/
+frontend/dist/
+frontend/build/
+.netlify/
 
-# Local Netlify folder
-.netlify
+# Runtime-persisted emerging career profiles
+backend/data/*.sqlite3

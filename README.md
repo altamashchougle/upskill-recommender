@@ -7,7 +7,7 @@
     <a href="https://github.com/altamashchougle/upskill-recommender/actions"><img src="https://img.shields.io/badge/build-passing-brightgreen?style=flat-square" alt="Build Status"></a>
     <a href="https://github.com/altamashchougle/upskill-recommender/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.11%2B-blue?style=flat-square" alt="Python Version"></a>
-    <img src="https://img.shields.io/badge/version-2.1.0-orange?style=flat-square" alt="Version">
+    <img src="https://img.shields.io/badge/version-1.0.0-orange?style=flat-square" alt="Version">
   </p>
 
   <p>

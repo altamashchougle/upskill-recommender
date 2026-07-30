@@ -274,10 +274,16 @@ export function AppProvider({ children }) {
         return { success: false, error: 'Request aborted' };
       }
       console.error('Error analyzing career path:', err);
+      
+      let finalErrorMessage = err.message || 'An error occurred while generating recommendations.';
+      if (finalErrorMessage.includes('Failed to fetch') || finalErrorMessage.includes('NetworkError')) {
+        finalErrorMessage = 'Network error: Unable to connect to the backend server. Please check backend availability or CORS settings.';
+      }
+
       setRecommendationData(prev => ({
         ...prev,
         loading: false,
-        error: err.message || 'An error occurred while generating recommendations.',
+        error: finalErrorMessage,
       }));
       return { success: false, error: err.message };
     }
